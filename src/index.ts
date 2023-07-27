@@ -2,32 +2,44 @@ import { resolve } from 'path'
 import fs from 'fs'
 import { createUnplugin } from 'unplugin'
 import type { ResolvedConfig } from 'vite'
+import type { Options } from './types'
 
-export interface Options {
-  stylesPath?: string     //相对于input目录
+
+function normalizeOptions(options: Options | undefined) {
+  return {
+    RelativeStylesPath: options?.stylesPath ?? './styles'
+  }
 }
 
 export default createUnplugin((options?: Options): any => {
-  let mainPath: string
+  let inputPath: string
+  let mainPath: string[] = []
   let stylesPath: string
   let styles: string
+  let { RelativeStylesPath } = normalizeOptions(options)
   return {
     name: 'unplugin-import-global-css',
     enforce: "post",
-    configResolved(config: ResolvedConfig) {
-      const root = config.root
-      const path = resolve(root, './src/main.ts')
-      mainPath = normalizePath(path)
-      stylesPath = resolve(root, './src/styles')
-      styles = getStylesStr(stylesPath)
-    },
     transform(code, id) {
-      if (mainPath == id) {
+      if (mainPath.includes(id)) {
         console.log(styles)
         return code + styles
       }
+    },
+    vite: {
+      configResolved(config: ResolvedConfig) {
+        const root = config.root
+        inputPath = resolve(root, './src')
+        const MainTsPath = resolve(inputPath, './main.ts')
+        const MainJsPath = resolve(inputPath, './main.js')
+        mainPath.push(normalizePath(MainTsPath))
+        mainPath.push(normalizePath(MainJsPath))
+        stylesPath = resolve(inputPath, RelativeStylesPath)
+        styles = getStylesStr(stylesPath)
+      },
     }
-    
+
+
   }
 })
 
