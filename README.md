@@ -122,7 +122,8 @@ Auto import all css files from `./src/styles`  into `main.(t/j)s`, as global css
 
 ```ts
 interface Options {
-    globStylesPath?: string /* The path of the css folder relative to src */
+    globStylesPath?: string /* The path of the css folder relative to src, default: './styles' */
+    inputName?: string /* input name, default: 'main' */
 }
 ```
 
