@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "reset.css": "^2.0.2",
     "vue": "^3.3.4"
   },
   "devDependencies": {
