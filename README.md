@@ -130,5 +130,4 @@ interface Options {
 
 
 ## License
-
 MIT License

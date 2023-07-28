@@ -24,3 +24,4 @@ export function formatStylesFiles(arr: string[], relativeStylesPath: string) {
     arr[index] = relativeStylesPath + `/${item}`
   })
 }
+
