@@ -7,15 +7,22 @@
     "webpack",
     "rollup",
     "esbuild",
+    "vite-plugin",
     "css",
     "auto-import"
   ],
   "author": "spacesouls",
   "license": "MIT",
   "description": "Global CSS auto import for vue",
+  "homepage": "https://github.com/SpacesoulsL/unplugin-import-global-css",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SpacesoulsL/unplugin-import-global-css"
+  },
   "scripts": {
     "build": "tsup && esno scripts/postbuild.ts",
-    "dev": "tsup --watch"
+    "dev": "tsup --watch",
+    "release": "bumpp"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
