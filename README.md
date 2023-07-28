@@ -1,6 +1,6 @@
 # unplugin-import-global-css
 
-[![NPM version](https://img.shields.io/npm/v/unplugin-import-global-css?color=316dd7&label=)](https://www.npmjs.com/package/unplugin-import-global-css)
+[![NPM version](https://img.shields.io/npm/v/unplugin-import-global-css?color=F70AF1&label=)](https://www.npmjs.com/package/unplugin-import-global-css)
 
 Auto import global css for Vue.
 
@@ -10,6 +10,12 @@ Auto import global css for Vue.
 - simpler code structure
 - faster compilation
 -  supports Vite, Webpack, Vue CLI, Rollup, esbuild, powered by <a href="https://github.com/unjs/unplugin">unplugin</a>.
+
+
+
+## effect
+
+![image](https://github.com/SpacesoulsL/unplugin-import-global-css/blob/main/examples/vite-vue3/public/effect.png)
 
 
 
