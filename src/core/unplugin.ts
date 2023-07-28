@@ -5,16 +5,22 @@ import path from 'path'
 import { normailzeOptions } from './options'
 import { normalizePath, forEachStyles, formatStylesFiles } from './format'
 
-const FILTER_INCLUDE = [/src\/main\.ts$/,/src\/main\.js$/]
-const FILTER_EXCLUDE = [/[\\/]node_modules[\\/]/]
+function initInclude(inputName: string):any[] {
+  const reg1 = new RegExp(`src\/${inputName}\.ts$`)
+  const reg2 = new RegExp(`src\/${inputName}\.js$`)
+  console.log([reg1, reg2])
+  return [reg1, reg2]
+}
 
 export default createUnplugin((options?: Options): any => {
+  const { relativeStylesPath, inputName } = normailzeOptions(options)
+  const FILTER_INCLUDE = initInclude(inputName)
+  const FILTER_EXCLUDE = [/[\\/]node_modules[\\/]/]
   const filter = createFilter(
     FILTER_INCLUDE,
     FILTER_EXCLUDE
   )
   let srcPath: string
-  const { relativeStylesPath } = normailzeOptions(options)
   let stylesPath: string
   const stylesFile: string[] = []
   

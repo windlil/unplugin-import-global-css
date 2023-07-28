@@ -7,6 +7,8 @@ import autocss from 'unplugin-import-global-css/vite'
 export default defineConfig({
   plugins: [
     vue(),
-    autocss(),
+    autocss({
+      inputName: 'index'
+    }),
     inspect()],
 })
