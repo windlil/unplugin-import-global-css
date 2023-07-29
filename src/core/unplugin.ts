@@ -8,12 +8,11 @@ import { normalizePath, forEachStyles, formatStylesFiles } from './format'
 function initInclude(inputName: string):any[] {
   const reg1 = new RegExp(`src\/${inputName}\.ts$`)
   const reg2 = new RegExp(`src\/${inputName}\.js$`)
-  console.log([reg1, reg2])
   return [reg1, reg2]
 }
 
 export default createUnplugin((options?: Options): any => {
-  const { relativeStylesPath, inputName } = normailzeOptions(options)
+  const { relativeStylesPath, inputName, include } = normailzeOptions(options)
   const FILTER_INCLUDE = initInclude(inputName)
   const FILTER_EXCLUDE = [/[\\/]node_modules[\\/]/]
   const filter = createFilter(
@@ -38,7 +37,7 @@ export default createUnplugin((options?: Options): any => {
       return result
     },
     transform(code) {
-      const importList = createImport(stylesFile)
+      const importList = createImport(stylesFile, include)
       return code + importList
     },
   }
@@ -46,8 +45,13 @@ export default createUnplugin((options?: Options): any => {
 
 
 
-export function createImport(arr: string[]) {
+export function createImport(arr: string[], include: string[]) {
   let importList = ''
+  if (include.length !== 0) {
+    include.forEach((item) => {
+      importList += `import '${item}';\n`
+    })
+  }
   arr.forEach((item) => {
     importList += `import '${item}';\n`
   })

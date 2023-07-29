@@ -8,7 +8,8 @@ export default defineConfig({
   plugins: [
     vue(),
     autocss({
-      inputName: 'index'
+      inputName: 'index',
+      include: ["reset.css"]
     }),
     inspect()],
 })

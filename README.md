@@ -124,6 +124,7 @@ Auto import all css files from `./src/styles`  into `main.(t/j)s`, as global css
 interface Options {
     globStylesPath?: string /* The path of the css folder relative to src, default: './styles' */
     inputName?: string /* input name, default: 'main' */
+    inlcude?: string[] /* include auto import node_modules css such as: reset.css */
 }
 ```
 
