@@ -15,7 +15,7 @@ Auto import global css for Vue.
 
 ## effect
 
-![image](https://github.com/SpacesoulsL/unplugin-import-global-css/blob/main/examples/vite-vue3/public/effect.png)
+![image](https://github.com/SpacesoulsL/unplugin-import-global-css/blob/main/examples/vite-vue3/public/effect1.png)
 
 
 
